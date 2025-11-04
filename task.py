@@ -19,7 +19,13 @@ class Name(Field):
     pass
 
 class Phone(Field):
-    pass
+   def __init__(self,value):
+
+        if isinstance(value, str) and value.isdigit() and len(value) == 10:
+            self.value = value
+        else:
+            print("Phone number must be a 10-digit string")
+            raise ValueError("Phone number must be a 10-digit string")
 
 
 class Record:
@@ -79,16 +85,14 @@ class AddressBook(UserDict):
 
 
 
-
-
-# Checking time
+# Checking time ----------------------------------------------------------------------------------------------------------
 john_record = Record("John")
 john_record.add_phone("1234567890")
 john_record.add_phone("5555555555")
 
 jane= Record("Jane")
-jane.add_phone("777777")
-jane.add_phone("321558890")
+jane.add_phone("7777777777")
+jane.add_phone("1234567800")
 
 book = AddressBook()
 book.add_record(john_record)
