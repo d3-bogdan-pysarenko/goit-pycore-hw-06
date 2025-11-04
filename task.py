@@ -50,12 +50,12 @@ class Record:
         else:
             raise ValueError(f"Phone number '{old_phone}' not found for editing within '{self.name}' record")
     
-    def remove_phone(self, phone_Num):
-        phone_obj_to_remove = self.find_phone(phone_Num)
+    def remove_phone(self, phone_num):
+        phone_obj_to_remove = self.find_phone(phone_num)
         if phone_obj_to_remove:
             self.phones.remove(phone_obj_to_remove)
         else:
-            raise ValueError(f"Phone number '{phone_Num}' not found in record for {self.name}.")
+            raise ValueError(f"Phone number '{phone_num}' not found in record for {self.name}.")
 
 
     def __str__(self):
