@@ -38,26 +38,24 @@ class Record:
         self.phones.append(phone_Num)
     
     def find_phone(self, phone):
-        for phone_Obj in self.phones:
-            if phone_Obj.value == phone:
-                return phone_Obj
+        for phone_obj in self.phones:
+            if phone_obj.value == phone:
+                return phone_obj
 
     def edit_phone(self, old_phone, new_phone):
 
-        phone_Obj_to_edit = self.find_phone(old_phone)
-        if phone_Obj_to_edit:
-            phone_Obj_to_edit.value = new_phone
+        phone_obj_to_edit = self.find_phone(old_phone)
+        if phone_obj_to_edit:
+            phone_obj_to_edit.value = new_phone
         else:
-            print(f"Phone number '{old_phone}' not found for editing within '{self.name}' record")
-            # raise ValueError(f"Phone number '{old_phone}' not found for editing within '{self.name}' record")
+            raise ValueError(f"Phone number '{old_phone}' not found for editing within '{self.name}' record")
     
     def remove_phone(self, phone_Num):
-        phone_Obj_to_remove = self.find_phone(phone_Num)
-        if phone_Obj_to_remove:
-            self.phones.remove(phone_Obj_to_remove)
+        phone_obj_to_remove = self.find_phone(phone_Num)
+        if phone_obj_to_remove:
+            self.phones.remove(phone_obj_to_remove)
         else:
-            print(f"Phone number '{phone_Num}' not found in record for {self.name}.")
-            # raise ValueError(f"Phone number '{phone_Num}' not found in record for {self.name}.")
+            raise ValueError(f"Phone number '{phone_Num}' not found in record for {self.name}.")
 
 
     def __str__(self):
@@ -69,8 +67,7 @@ class AddressBook(UserDict):
             if isinstance(record, Record):
                 self.data[record.name.value] = record
             else:
-                print("Only Record objects can be added to AddressBook")
-                # raise TypeError("Only Record objects can be added to AddressBook.")
+                raise TypeError("Only Record objects can be added to AddressBook.")
             
         def find(self,name):
             return self.data.get(name)
@@ -79,8 +76,7 @@ class AddressBook(UserDict):
             if name in self.data:
                 del self.data[name]
             else:
-                print(f"Contact '{name}' not found in the address book")
-                # raise KeyError(f"Contact '{name}' not found in the address book.")
+                raise KeyError(f"Contact '{name}' not found in the address book.")
 
 
 
@@ -110,7 +106,7 @@ print('------------------------------------------------------------------')
 
 print(john_record.find_phone("5555555555"))
 john_record.edit_phone("5555555555", "0000000000")
-john_record.edit_phone("5555555555", "0000000000")
+# john_record.edit_phone("5555555555", "0000000000")
 print(john_for_edit)
 print(john_record)
 
@@ -119,7 +115,7 @@ print('------------------------------------------------------------------')
 print('------------------------------------------------------------------')
 
 john_record.remove_phone("0000000000");
-john_record.remove_phone("0000000000");
+# john_record.remove_phone("0000000000");
 print(john_record)
 
 print('------------------------------------------------------------------')
@@ -129,7 +125,7 @@ print('------------------------------------------------------------------')
 for name, record in book.data.items():
     print(record)
 
-book.delete('Kevin')
+# book.delete('Kevin')
 book.delete('Jane')
 
 for name, record in book.data.items():
