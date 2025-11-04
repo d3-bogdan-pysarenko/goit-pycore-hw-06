@@ -33,9 +33,9 @@ class Record:
         self.name = Name(name)
         self.phones = []
 
-    def add_phone(self,phoneNumber):
-        phone_Num = Phone(phoneNumber)
-        self.phones.append(phone_Num)
+    def add_phone(self,phone_number):
+        phone_num_act = Phone(phone_number)
+        self.phones.append(phone_num_act)
     
     def find_phone(self, phone):
         for phone_obj in self.phones:
